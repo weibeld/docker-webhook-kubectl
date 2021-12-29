@@ -5,7 +5,7 @@ A Docker image containing [webhook](https://github.com/adnanh/webhook), [kubectl
 Great for automating Kubernetes maintenance operations! ☸️
 
 [![Docker Image Version (latest semver)](https://img.shields.io/docker/v/weibeld/webhook-kubectl?color=blue&label=docker%20hub&logo=docker&logoColor=white&sort=semver)](https://hub.docker.com/r/weibeld/webhook-kubectl)
-![Docker Image Size (latest semver)](https://img.shields.io/docker/image-size/weibeld/webhook-kubectl?color=blue&label=image%20size&logo=docker&logoColor=white&sort=semver)
+[![Docker Image Size (latest semver)](https://img.shields.io/docker/image-size/weibeld/webhook-kubectl?color=blue&label=image%20size&logo=docker&logoColor=white&sort=semver)](https://hub.docker.com/r/weibeld/webhook-kubectl)
 
 ## Description
 
