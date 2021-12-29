@@ -1,6 +1,6 @@
 # webhook-kubectl 
 
-A Docker image containing [webhook](https://github.com/adnanh/webhook), [kubectl](https://kubernetes.io/docs/reference/kubectl/kubectl/), and additional useful tools.
+A Docker image containing [webhook](https://github.com/adnanh/webhook), [kubectl](https://kubernetes.io/docs/reference/kubectl/kubectl/), and additional other useful tools.
 
 Great for automating Kubernetes maintenance operations! ☸️
 
@@ -18,6 +18,15 @@ Besides [webhook](https://github.com/adnanh/webhook) and [kubectl](https://kuber
 > **Note:** the image also includes the [`gcompat`](https://pkgs.alpinelinux.org/package/edge/community/x86/gcompat) compatibility layer for GNU libc on top of [musl libc](https://musl.libc.org/). This allows binaries that are dynamically linked against GNU libc to run in this container. This is necessary because [Alpine uses musl libc](https://www.alpinelinux.org/posts/Alpine-Linux-has-switched-to-musl-libc.html) rather than GNU libc.
 
 The image does not define a default command or entrypoint, so if you want to run the `webhook` command, you have to specify it explicitly when running the image (see [_Usage_](#usage) below).
+
+## Versions
+
+The versions of webhook and kubectl included in the image are defined in the [versions](versions) file.
+
+For the latest version of the image, these are:
+
+- webhook: 2.8.0
+- kubectl: v1.23.0
 
 ## Usage
 
@@ -37,8 +46,8 @@ docker run \
 
 If you deploy the image to a Kubernetes cluster, then kubectl configures itself to acess this cluster by using the information injected into each container by Kubernetes. This includes the Pod's ServiceAccount token (`/var/run/secrets/kubernetes.io/serviceaccount/token`) for authentication.
 
-So, if you want to access the cluster that kubectl is running in you don't need a kubeconfig file or any other configuration.
+So, if you want to access the cluster that kubectl is running, in you don't need a kubeconfig file or any other configuration.
 
 If you want to access a different cluster, or deploy the image outside of Kubernetes, you need to provide an appropriate kubeconfig file to kubectl in the container.
 
-In any case, for granting permissions to kubectl, you need to create appropriate [Roles](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.22/#role-v1-rbac-authorization-k8s-io)/[ClusterRoles](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.22/#clusterrole-v1-rbac-authorization-k8s-io) in the target cluster and bind them to the [ServiceAccount or user](https://kubernetes.io/docs/reference/access-authn-authz/authentication/) used by kubectl with corresponding [RoleBindings](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.22/#rolebinding-v1-rbac-authorization-k8s-io)/[ClusterRoleBindings](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.22/#clusterrolebinding-v1-rbac-authorization-k8s-io).
+In any case, for granting permissions to kubectl, you need to create appropriate [Roles](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.22/#role-v1-rbac-authorization-k8s-io) or [ClusterRoles](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.22/#clusterrole-v1-rbac-authorization-k8s-io) in the target cluster and bind them to the [ServiceAccount or user](https://kubernetes.io/docs/reference/access-authn-authz/authentication/) used by kubectl with corresponding [RoleBindings](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.22/#rolebinding-v1-rbac-authorization-k8s-io) or [ClusterRoleBindings](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.22/#clusterrolebinding-v1-rbac-authorization-k8s-io).
