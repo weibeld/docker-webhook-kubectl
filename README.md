@@ -14,6 +14,7 @@ The Docker image is based on [Alpine](https://www.alpinelinux.org/).
 Besides [webhook](https://github.com/adnanh/webhook) and [kubectl](https://kubernetes.io/docs/reference/kubectl/kubectl/), the latest version of this image includes the following tools:
 
 - [jq](https://stedolan.github.io/jq/)
+- [Bash](https://www.gnu.org/software/bash/)
 
 > **Note:** the image also includes the [`gcompat`](https://pkgs.alpinelinux.org/package/edge/community/x86/gcompat) compatibility layer for GNU libc on top of [musl libc](https://musl.libc.org/). This allows binaries that are dynamically linked against GNU libc to run in this container. This is necessary because [Alpine uses musl libc](https://www.alpinelinux.org/posts/Alpine-Linux-has-switched-to-musl-libc.html) rather than GNU libc.
 
@@ -36,7 +37,7 @@ Assuming you have a [webhook config file](https://github.com/adnanh/webhook#conf
 docker run \
   -p 9000:9000 \
   -v "$PWD"/hooks.yaml:/home/hooks.yaml \
-  weibeld/webhook-kubectl:0.0.1 \
+  weibeld/webhook-kubectl:0.0.2 \
   webhook --hooks /home/hooks.yaml
 ```
 

@@ -33,7 +33,9 @@ RUN wget https://dl.k8s.io/release/$(awk -F = '/^kubectl=/ {print $2}' versions)
     mv kubectl /usr/local/bin
 
 # Install additional useful tools
-RUN apk add jq
+RUN apk add \
+    jq \
+    bash
 
 RUN rm -rf /tmp/build
 WORKDIR /
